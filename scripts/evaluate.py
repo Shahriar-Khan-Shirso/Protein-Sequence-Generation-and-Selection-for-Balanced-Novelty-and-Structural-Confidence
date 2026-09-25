@@ -13,10 +13,10 @@ import json
 import pandas as pd
 import torch
 
-from sdima.config import ExperimentConfig
-from sdima.folding import threshold_table
-from sdima.metrics import diversity_report, fdseq, novelty_report
-from sdima.models import ProteinEncoder
+from model.config import ExperimentConfig
+from model.folding import threshold_table
+from model.metrics import diversity_report, fdseq, novelty_report
+from model.models import ProteinEncoder
 
 
 def main():

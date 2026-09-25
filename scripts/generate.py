@@ -8,11 +8,11 @@ import argparse
 import pandas as pd
 import torch
 
-from sdima.config import ExperimentConfig
-from sdima.data import length_pool
-from sdima.diffusion import LatentDiffusion
-from sdima.generation import generate, validity_report
-from sdima.models import ScoreEstimator, SequenceDecoder
+from model.config import ExperimentConfig
+from model.data import length_pool
+from model.diffusion import LatentDiffusion
+from model.generation import generate, validity_report
+from model.models import ScoreEstimator, SequenceDecoder
 
 
 def main():

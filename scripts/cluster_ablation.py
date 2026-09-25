@@ -13,10 +13,10 @@ import argparse
 import pandas as pd
 import torch
 
-from sdima.config import ExperimentConfig
-from sdima.metrics import embed_sequences
-from sdima.models import ProteinEncoder
-from sdima.selection.cluster_ablation import (
+from model.config import ExperimentConfig
+from model.metrics import embed_sequences
+from model.models import ProteinEncoder
+from model.selection.cluster_ablation import (
     cluster_embeddings,
     cluster_stats,
     pool_concentration,

@@ -1,17 +1,29 @@
 # Checkpoints
 
-Each checkpoint is roughly 470 MB, so they are hosted on HuggingFace
-rather than tracked in git. Place the downloaded files in this directory,
-or pass an explicit path to `scripts/generate.py --checkpoint`.
+Hosted on Hugging Face rather than tracked in git — each is roughly 470 MB.
 
-Every row below corresponds to one config in `configs/` and one row in
-the results tables in the main README, so a reported number can be
-traced to the weights that produced it.
+**[huggingface.co/shirshokhan/cheap-protein-diffusion-model](https://huggingface.co/shirshokhan/cheap-protein-diffusion-model)**
+
+```bash
+# everything (6.09 GB)
+hf download shirshokhan/cheap-protein-diffusion-model --local-dir checkpoints
+
+# or a single checkpoint
+hf download shirshokhan/cheap-protein-diffusion-model \
+    "swissprot 106k 225 epoch checkpoint.pt" --local-dir checkpoints
+```
+
+Place the files in this directory, or pass an explicit path to
+`scripts/generate.py --checkpoint`.
 
 ## Mapping
 
-| Config | Checkpoint file | Reported pLDDT |
-|---|---|---|
+Every row corresponds to one config in `configs/` and one row in the
+results tables in the main README, so a reported number can be traced to
+the weights that produced it.
+
+| Config | File | pLDDT |
+|:--|:--|--:|
 | `baseline_pdb_curated_35m_180ep` | `esm2 35 M 180 epoch.pt` | 72.89 |
 | `encoder_esm2_8m` | `esm2 8m checkpoint.pt` | 71.83 |
 | `encoder_esm2_150m` | `esm2 150M checkpoint.pt` | 73.45 |
@@ -29,13 +41,15 @@ traced to the weights that produced it.
 The two cluster ablation rows reuse the baseline checkpoint; they differ
 only in the selection rule applied after generation.
 
+Filenames carry spaces, so quote them in shell commands.
+
 ## What a checkpoint contains
 
 ```python
 {
-    "denoiser":         state dict of the trained denoiser,
+    "denoiser":         trained denoiser weights,
     "denoiser_ema":     averaged weights — this is what generation uses,
-    "decoder":          state dict of the decoder,
+    "decoder":          decoder weights,
     "optimizer":        optimiser state, for resuming,
     "scheduler":        LR scheduler state,
     "latent_mean":      per-dimension normalisation mean,
@@ -49,7 +63,7 @@ only in the selection rule applied after generation.
 ```
 
 Generation loads `denoiser_ema`, not `denoiser`. Under cosine annealing
-with warm restarts the instantaneous weights at the end of a cycle are
+with warm restarts, the instantaneous weights at the end of a cycle are
 not necessarily the best point on the trajectory.
 
 The normalisation statistics travel with the checkpoint deliberately.

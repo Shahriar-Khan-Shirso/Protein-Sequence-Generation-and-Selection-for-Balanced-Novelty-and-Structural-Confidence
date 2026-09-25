@@ -7,7 +7,7 @@ import argparse
 
 import pandas as pd
 
-from sdima.folding import fold_sequences, threshold_table
+from model.folding import fold_sequences, threshold_table
 
 
 def main():

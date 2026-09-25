@@ -13,9 +13,9 @@ import argparse
 import pandas as pd
 import torch
 
-from sdima.config import ExperimentConfig
-from sdima.models import ProteinEncoder
-from sdima.selection import (
+from model.config import ExperimentConfig
+from model.models import ProteinEncoder
+from model.selection import (
     esm2_pll,
     normalise_pll,
     score_all,

@@ -6,8 +6,8 @@
 import argparse
 from pathlib import Path
 
-from sdima.config import ExperimentConfig
-from sdima.data import (
+from model.config import ExperimentConfig
+from model.data import (
     CORPUS_PRESETS,
     corpus_repetition,
     load_pdb,

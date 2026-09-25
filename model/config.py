@@ -109,7 +109,7 @@ class SelectionConfig:
     entropy_sub_weight: float = 0.33
     pll_stride: int = 5
     # Cluster-aware retention was measured and removed; see
-    # sdima.selection.cluster_ablation.
+    # model.selection.cluster_ablation.
     cluster_rule: str = "none"           # none | score_scaled | uniform
 
 

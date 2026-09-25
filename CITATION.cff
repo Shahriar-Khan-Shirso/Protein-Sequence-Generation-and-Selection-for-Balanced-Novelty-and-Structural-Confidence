@@ -2,22 +2,53 @@ cff-version: 1.2.0
 title: >-
   Protein Sequence Generation and Selection for Balanced Novelty
   and Structural Confidence
-message: If you use this software, please cite it as below.
+message: If you use this software, please cite the thesis below.
 type: software
 authors:
   - family-names: Khan Shirso
     given-names: Shahriar
+    affiliation: Brac University
+  - family-names: Biswas Mugdha
+    given-names: Suprio
+    affiliation: Brac University
+  - family-names: Anis Trishna
+    given-names: Anika
+    affiliation: Brac University
+  - family-names: Siddiki Aishi
+    given-names: Sinka
+    affiliation: Brac University
 repository-code: >-
   https://github.com/Shahriar-Khan-Shirso/Protein-Sequence-Generation-and-Selection-for-Balanced-Novelty-and-Structural-Confidence
 abstract: >-
   Latent diffusion over frozen protein language model representations
   with a post-generation selection stage, trained and evaluated on a
-  single consumer GPU. Ablations across encoder capacity, noise
+  single 24 GB consumer GPU. Ablations across encoder capacity, noise
   schedule, training duration, auxiliary objectives, selection rules
   and three training corpora of differing redundancy.
 keywords:
+  - protein sequence generation
   - protein design
-  - latent diffusion
+  - diffusion models
   - protein language models
-  - generative models
+  - sequence novelty
+  - pLDDT
 license: MIT
+date-released: 2026-02-01
+references:
+  - type: thesis
+    title: >-
+      Protein Sequence Generation and Selection for Balanced Novelty
+      and Structural Confidence
+    thesis-type: B.Sc. thesis
+    institution:
+      name: Brac University
+    authors:
+      - family-names: Khan Shirso
+        given-names: Shahriar
+      - family-names: Biswas Mugdha
+        given-names: Suprio
+      - family-names: Anis Trishna
+        given-names: Anika
+      - family-names: Siddiki Aishi
+        given-names: Sinka
+    year: 2026

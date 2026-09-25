@@ -8,20 +8,20 @@ import argparse
 import pandas as pd
 import torch
 
-from sdima.config import ExperimentConfig
-from sdima.data import (
+from model.config import ExperimentConfig
+from model.data import (
     SeqLatentDataset,
     encode_corpus,
     latent_stats,
     normalise,
     residue_targets,
 )
-from sdima.diffusion import LatentDiffusion
-from sdima.models import EMA, ProteinEncoder, ScoreEstimator, SequenceDecoder
-from sdima.training import train as run_training
-from sdima.training.aux_losses import CompositionObjectives, measure_reference_levels
-from sdima.training.aux_losses import build_kmer_table, polar_mask
-from sdima.training.refine_decoder import refine
+from model.diffusion import LatentDiffusion
+from model.models import EMA, ProteinEncoder, ScoreEstimator, SequenceDecoder
+from model.training import train as run_training
+from model.training.aux_losses import CompositionObjectives, measure_reference_levels
+from model.training.aux_losses import build_kmer_table, polar_mask
+from model.training.refine_decoder import refine
 
 
 def main():
@@ -91,7 +91,7 @@ def main():
     predictor = None
     if cfg.aux.proxy_enabled:
         state = torch.load(cfg.aux.proxy_predictor_path, map_location=device, weights_only=False)
-        from sdima.training import PlddtPredictor
+        from model.training import PlddtPredictor
 
         predictor = PlddtPredictor(cfg.model.latent_dim, max_len=cfg.data.max_len).to(device)
         predictor.load_state_dict(state["state_dict"])
