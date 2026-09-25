@@ -1,0 +1,87 @@
+name: encoder_esm2_8m
+description: >-
+  Encoder ablation: ESM-2 8M (latent width 320).
+checkpoint: "esm2 8m checkpoint.pt"
+
+data:
+  corpus: pdb_curated
+  min_len: 128
+  max_len: 256
+  length_mode: drop
+  train_csv: data/pdb_curated_train.csv
+  test_csv: data/pdb_curated_test.csv
+  latent_cache: cache/encoder_esm2_8m_latents.dat
+
+model:
+  encoder: "8M"
+  denoiser_hidden: 512
+  denoiser_layers: 6
+  denoiser_heads: 8
+  decoder_hidden: 480
+  decoder_layers: 3
+  decoder_heads: 8
+  dropout_denoiser: 0.0
+  dropout_decoder: 0.1
+
+diffusion:
+  schedule: tan
+  steepness: 10.0
+  n_steps: 1000
+  sample_steps: 250
+  spacing: signal
+  clamp_val: 3.0
+
+aux:
+  proxy_enabled: false
+  proxy_weight: 0.05
+  proxy_target: 93.0
+  proxy_warmup_epochs: 30
+  proxy_predictor_path: plddt_predictor.pt
+  composition_enabled: false
+  kmer_weight: 0.10
+  polar_weight: 0.10
+  entropy_weight: 0.10
+  composition_warmup_epochs: 0
+  strict_refs: true
+
+train:
+  epochs: 180
+  batch_size: 32
+  lr: 0.0001
+  weight_decay: 0.00001
+  ce_weight: 0.2
+  self_cond_prob: 0.5
+  grad_clip: 2.0
+  warmup_steps: 500
+  cawr_period_epochs: 15
+  ema_decay: 0.9999
+  seed: 42
+  checkpoint_every: 5
+  checkpoint_name: encoder_esm2_8m.pt
+  refine_decoder: true
+  refine_epochs: 30
+  refine_lr: 0.00005
+  refine_t_ceiling: 250
+
+generation:
+  n_candidates: 10000
+  batch_size: 512
+  seed: 42
+  temperature: 1.0
+
+selection:
+  enabled: true
+  top_k: 2000
+  bio_weight: 0.3
+  pll_weight: 0.7
+  kmer_sub_weight: 0.34
+  polar_sub_weight: 0.33
+  entropy_sub_weight: 0.33
+  pll_stride: 5
+  cluster_rule: none
+
+evaluation:
+  plddt_threshold: 30.0
+  cd_thresholds: [0.5, 0.95]
+  coverage: 0.8
+  fdseq_normalised: true
