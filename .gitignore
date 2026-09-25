@@ -1,0 +1,49 @@
+# Checkpoints are hosted on HuggingFace, not tracked here (~470 MB each)
+*.pt
+*.pth
+checkpoints/*
+!checkpoints/README.md
+
+# Latent caches
+*.dat
+cache/
+*.npy
+
+# Corpora and generated data
+data/*.csv
+data/*.fasta
+data/*.fasta.gz
+*.fasta
+*.fasta.gz
+generated_raw.csv
+scored_sequences.csv
+selected.csv
+unselected.csv
+cluster_selected.csv
+folded*.csv
+metrics.json
+
+# Structure prediction outputs
+*.pdb
+pdbs/
+plddt_*_pdbs/
+
+# MMseqs2 working files
+mmseqs_tmp/
+mmseqs_out*
+mmseqs_input.fasta
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

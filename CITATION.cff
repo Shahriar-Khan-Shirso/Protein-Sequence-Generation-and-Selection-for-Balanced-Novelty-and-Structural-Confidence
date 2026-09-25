@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: >-
+  Protein Sequence Generation and Selection for Balanced Novelty
+  and Structural Confidence
+message: If you use this software, please cite it as below.
+type: software
+authors:
+  - family-names: Khan Shirso
+    given-names: Shahriar
+repository-code: >-
+  https://github.com/Shahriar-Khan-Shirso/Protein-Sequence-Generation-and-Selection-for-Balanced-Novelty-and-Structural-Confidence
+abstract: >-
+  Latent diffusion over frozen protein language model representations
+  with a post-generation selection stage, trained and evaluated on a
+  single consumer GPU. Ablations across encoder capacity, noise
+  schedule, training duration, auxiliary objectives, selection rules
+  and three training corpora of differing redundancy.
+keywords:
+  - protein design
+  - latent diffusion
+  - protein language models
+  - generative models
+license: MIT

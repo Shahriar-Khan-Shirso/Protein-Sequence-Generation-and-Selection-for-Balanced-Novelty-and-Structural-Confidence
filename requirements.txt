@@ -1,0 +1,24 @@
+# Core
+torch>=2.0
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+pyyaml>=6.0
+tqdm>=4.65
+
+# Protein language models and structure prediction
+fair-esm>=2.0.0
+transformers>=4.30        # ProtBERT encoder ablation only
+biotite>=0.37             # reads pLDDT from predicted PDB b-factors
+
+# Metrics
+rapidfuzz>=3.0            # novelty via normalised edit distance
+scikit-learn>=1.3
+
+# Cluster ablation only (not needed for the main pipeline)
+umap-learn>=0.5
+hdbscan>=0.8
+
+# ESMFold additionally requires openfold; see its installation notes.
+# MMseqs2 is a system binary, needed only to rebuild the SwissProt
+# corpus from scratch.
