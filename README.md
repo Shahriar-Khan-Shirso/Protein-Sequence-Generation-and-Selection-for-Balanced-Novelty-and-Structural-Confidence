@@ -35,10 +35,7 @@ sequences — is also the route back towards the training data.
 Systems that manage this trade-off well are typically trained on multi-GPU
 clusters. This work asks how much of the balance survives on the hardware an
 individual researcher actually owns, and which parts of such a system are worth
-investing in. It reimplements and extends
-[DiMA](https://arxiv.org/abs/2403.03726) rather than proposing a new generative
-paradigm; the contribution is a characterised operating point under a fixed
-compute budget, together with the full ablation record behind it.
+investing in.
 
 <table>
 <tr><td width="33%" valign="top">
@@ -255,42 +252,8 @@ results/     reported tables as CSV
 docs/        thesis PDF
 ```
 
----
 
-## On the cluster ablation
 
-[`model/selection/cluster_ablation.py`](model/selection/cluster_ablation.py) sits
-deliberately outside the pipeline. Two retention rules were built and measured —
-retention scaled by cluster quality, and a uniform 20% per cluster — and the stage
-was then removed, because diversity is resolved upstream by corpus deduplication
-at a fraction of the complexity and with no quality penalty. The code is kept so
-the two cluster rows in the results table can be reproduced.
-
-The ordinary runs also contain clustering steps, but with retention set to 0.99
-for every cluster, which keeps essentially everything and is equivalent to global
-ranking. Those are not reproduced here.
-
----
-
-## Reported negative results
-
-Both auxiliary objectives failed, and for different reasons.
-
-The **proxy foldability objective** satisfied its hinge within a few epochs and
-thereafter contributed a loss of approximately 0.003 for the rest of training.
-Across the full run it bought 1.67 pLDDT points at a cost of 0.0714 in cluster
-diversity — a worse exchange than simply training longer.
-
-The **composition objectives** produced a null result against a matched control
-(40.69 against 40.63), despite being designed around the two failure modes they
-were meant to avoid: they score discrete sequences through a straight-through
-estimator, and hinge against empirical quantiles of the real distribution so that
-90%, 50% and 90% of real sequences respectively remain in violation. That the
-remedies were applied and the objective still failed is the informative part — it
-locates the constraint on foldability somewhere other than amino acid composition
-and 3-mer statistics.
-
----
 
 ## Limitations
 
@@ -345,8 +308,7 @@ before rather than after it is built.
 ## Acknowledgements
 
 Built on [ESM-2 and ESMFold](https://github.com/facebookresearch/esm) (Meta AI)
-and [ProtBERT](https://huggingface.co/Rostlab/prot_bert) (Rostlab). The diffusion
-framework follows [DiMA](https://arxiv.org/abs/2403.03726). We thank our research
+and [ProtBERT](https://huggingface.co/Rostlab/prot_bert) (Rostlab).  We thank our research
 assistant Azwad Aziz for support with the experiments.
 
 Released under the [MIT License](LICENSE).
