@@ -181,6 +181,9 @@ See [`checkpoints/README.md`](checkpoints/README.md) for the mapping from each
 configuration to its checkpoint file.
 
 ---
+Download the used swiss-prot dataset from [ https://ftp.uniprot.or
+g/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_s
+prot.fasta.gz. ](url)
 
 ## Running the pipeline
 
