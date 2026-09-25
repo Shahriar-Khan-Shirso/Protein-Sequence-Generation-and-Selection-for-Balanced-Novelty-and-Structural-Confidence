@@ -1,0 +1,4 @@
+configuration,plddt_mean,fdseq,novelty_l1,cd_at_0.5
+"Whole PDB, 180 ep (selected)",71.49,0.1442,0.4296,0.6578
+"Whole PDB, 180 ep (unfiltered)",48.06,0.0413,0.6325,0.9287
+# real-sequence reference pLDDT = 78.87,,,,

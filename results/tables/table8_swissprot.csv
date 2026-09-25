@@ -1,0 +1,7 @@
+configuration,plddt_mean,fdseq,novelty_l1,cd_at_0.5
+"SwissProt, 135 ep (selected)",66.67,0.0521,0.5906,1.0
+"SwissProt, 180 ep (selected)",68.64,0.06,0.5633,0.9975
+"SwissProt, 225 ep (selected)",71.73,0.065,0.5425,0.992
+"SwissProt, 180 ep (unfiltered)",50.35,0.0361,0.6633,1.0
+"SwissProt, 225 ep (unfiltered)",52.17,0.029,0.6533,1.0
+# real-sequence reference pLDDT = 83.9,,,,

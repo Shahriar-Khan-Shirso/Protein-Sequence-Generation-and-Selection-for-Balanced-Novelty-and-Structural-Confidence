@@ -1,0 +1,4 @@
+corpus,source,n_train,length_band,rep_train,generated_cd_at_0.5
+pdb_curated,PDB 2000-2015,18349,128-256,0.7466,0.3129
+pdb_whole,PDB 1971-2015,51829,40-512,0.7453,0.6578
+swissprot,SwissProt 50% id,105991,128-256,0.0873,0.9975
